@@ -1,0 +1,45 @@
+{
+  "name": "anylist-cli",
+  "version": "0.1.0",
+  "description": "Command-line interface and MCP server for AnyList shopping lists and recipes",
+  "license": "MIT",
+  "author": "Colin Nederkoorn",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "anylist": "dist/cli.js",
+    "anylist-mcp": "dist/mcp.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/cli.js',0o755);require('fs').chmodSync('dist/mcp.js',0o755)\"",
+    "test": "vitest run",
+    "cli": "node dist/cli.js",
+    "mcp": "node dist/mcp.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "anylist",
+    "cli",
+    "mcp",
+    "shopping-list",
+    "recipes"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "commander": "^15.0.0",
+    "protobufjs": "^8.8.1",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  }
+}
